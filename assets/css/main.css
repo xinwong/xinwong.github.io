@@ -2187,7 +2187,7 @@ input, select, textarea {
 				width: 100%;
 			}
 
-/* 		.image.avatar {
+		.image.avatar {
 			border-radius: 100%;
 			overflow: hidden;
 		}
@@ -2196,7 +2196,7 @@ input, select, textarea {
 				border-radius: 100%;
 				display: block;
 				width: 100%;
-			} */
+			}
 
 		.image.main {
 			display: block;
