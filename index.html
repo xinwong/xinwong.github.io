@@ -9,353 +9,452 @@
   <meta name="keywords" content="Xin Wang, Shanghai AI Laboratory, Fudan University, Machine Learning Safety, LLM Safety, Vision-Language Models">
   <title>Xin Wang</title>
 
-  <link rel="icon" type="images/photo2022.jpg" href="images/fudan.png">
+  <link rel="icon" type="image/png" href="images/fudan.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --text: #202124;
-      --muted: #5f6368;
-      --light: #f8f9fa;
-      --border: #e8eaed;
-      --blue: #1a73e8;
-      --blue-dark: #1558b0;
-      --blue-light: #e8f0fe;
-      --green: #188038;
-      --orange: #b06000;
-      --max-width: 900px;
-    }
-
-    * {
+    /* Reset */
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
+    /* Variables */
+    :root {
+      --accent: #1e293b;
+      --accent-light: #ece9e3;
+      --accent-border: #d4cfc6;
+      --text: #1a1a1a;
+      --muted: #555;
+      --subtle: #888;
+      --border: #ddd;
+      --bg: #f5f4f0;
+      --max-w: 780px;
+    }
+
+    /* Base */
     html {
       scroll-behavior: smooth;
     }
 
     body {
-      margin: 0;
-      color: var(--text);
-      background: #fff;
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: 15px;
-      line-height: 1.65;
+      line-height: 1.75;
+      color: var(--text);
+      background: var(--bg);
       -webkit-font-smoothing: antialiased;
     }
 
     a {
-      color: var(--blue);
+      color: var(--text);
       text-decoration: none;
+      transition: color 0.15s ease, text-decoration-color 0.15s ease;
     }
 
     a:hover {
-      color: var(--blue-dark);
+      color: var(--muted);
       text-decoration: underline;
-      text-underline-offset: 3px;
+      text-underline-offset: 2px;
     }
 
+    /* Navigation */
     nav {
-      border-bottom: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.96);
       position: sticky;
       top: 0;
-      z-index: 10;
-      backdrop-filter: blur(8px);
+      z-index: 100;
+      background: rgba(245, 244, 240, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
     }
 
     .nav-inner {
-      max-width: var(--max-width);
+      max-width: var(--max-w);
       margin: 0 auto;
-      padding: 15px 24px;
+      padding: 14px 24px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
     }
 
     .nav-name {
-      color: var(--text);
-      font-weight: 600;
       font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
     }
 
     .nav-name:hover {
-      color: var(--text);
+      color: var(--muted);
       text-decoration: none;
     }
 
     .nav-links {
-      margin: 0;
-      padding: 0;
-      list-style: none;
       display: flex;
-      gap: 22px;
-      font-size: 14px;
+      gap: 28px;
+      list-style: none;
     }
 
     .nav-links a {
+      font-size: 14px;
       color: var(--muted);
-    }
-
-    .nav-links a:hover {
-      color: var(--blue);
+      font-weight: 400;
       text-decoration: none;
     }
 
+    .nav-links a:hover {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    /* Main */
     main {
-      max-width: var(--max-width);
+      max-width: var(--max-w);
       margin: 0 auto;
-      padding: 46px 24px 72px;
+      padding: 0 24px;
     }
 
     section {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border);
       scroll-margin-top: 82px;
     }
 
+    section:last-child {
+      border-bottom: none;
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 32px;
+      letter-spacing: -0.01em;
+    }
+
+    /* About */
     .about-header {
       display: flex;
-      gap: 30px;
       align-items: center;
+      gap: 36px;
+      margin-bottom: 32px;
     }
 
     .about-photo {
+      flex: 0 0 auto;
+    }
+
+    .about-photo img {
       width: 150px;
       height: 150px;
-      flex: 0 0 150px;
-      border-radius: 14px;
-      overflow: hidden;
-      background: var(--blue-light);
-      border: 1px solid var(--border);
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      border: 2px solid var(--border);
+      background: var(--accent-light);
+    }
+
+    .about-photo.no-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      background: var(--accent-light);
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .about-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
     .about-photo.no-photo::before {
       content: "XW";
-      color: var(--blue);
-      font-size: 34px;
+      color: var(--muted);
+      font-size: 32px;
       font-weight: 600;
       letter-spacing: -0.04em;
     }
 
     .about-info h1 {
-      margin: 0 0 8px;
-      font-size: 42px;
-      line-height: 1.08;
+      font-size: 24px;
       font-weight: 600;
-      letter-spacing: -0.04em;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
     }
 
-    .role,
-    .email {
-      margin: 0 0 7px;
+    .about-info .role {
+      font-size: 14px;
       color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .about-info .email {
+      font-size: 13px;
+      color: var(--subtle);
+      font-family: "SF Mono", "Consolas", "Courier New", monospace;
+      margin-bottom: 16px;
     }
 
     .about-links {
-      margin-top: 13px;
       display: flex;
+      gap: 8px;
       flex-wrap: wrap;
-      gap: 14px;
-      font-size: 14px;
-      font-weight: 500;
     }
 
-    .about-bio {
-      margin-top: 28px;
+    .about-links a {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 3px 10px;
+      text-decoration: none;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .about-links a:hover {
+      color: var(--text);
+      border-color: var(--text);
+      text-decoration: none;
     }
 
     .about-bio p {
-      margin: 0 0 13px;
-      color: #303134;
-    }
-
-    .hiring-note {
-      margin-top: 18px;
-      padding: 13px 16px;
-      background: var(--blue-light);
-      border-left: 3px solid var(--blue);
-      border-radius: 8px;
-      color: #303134;
-    }
-
-    .section-title {
-      margin: 52px 0 22px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--border);
-      font-size: 21px;
-      line-height: 1.3;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
-
-    .pub-area {
-      display: inline-block;
-      margin: 22px 0 8px;
-      padding: 3px 10px;
-      border-radius: 999px;
-      background: var(--blue-light);
-      color: var(--blue-dark);
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    .pub-item {
-      padding: 15px 0 16px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .pub-title {
-      color: var(--text);
-      font-size: 15.5px;
-      font-weight: 600;
-      line-height: 1.45;
-    }
-
-    .pub-authors {
-      margin-top: 5px;
       color: var(--muted);
-      font-size: 13.5px;
-      line-height: 1.5;
+      margin-bottom: 14px;
+      font-size: 15px;
     }
 
-    .me {
-      color: var(--text);
-      font-weight: 600;
+    .about-bio p:last-child {
+      margin-bottom: 0;
     }
 
-    .pub-venue {
-      margin-top: 5px;
-      color: var(--muted);
-      font-size: 13.5px;
-    }
-
-    .venue-name {
-      color: var(--blue-dark);
+    .about-bio a {
       font-weight: 500;
     }
 
+    .hiring-note {
+      margin-top: 20px;
+      padding: 14px 18px;
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent-border);
+      border-radius: 0 6px 6px 0;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .hiring-note a,
+    .hiring-note strong {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* Publications */
+    .pub-area {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--subtle);
+      margin: 36px 0 20px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pub-area:first-of-type {
+      margin-top: 0;
+    }
+
+    .pub-item {
+      margin-bottom: 28px;
+      padding-left: 14px;
+      border-left: 2px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    .pub-item:hover {
+      border-left-color: #bbb;
+    }
+
+    .pub-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 5px;
+      line-height: 1.5;
+    }
+
+    .pub-authors {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 4px;
+      line-height: 1.6;
+    }
+
+    .pub-authors .me,
+    .me {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .pub-venue {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .venue-name {
+      font-weight: 600;
+      color: var(--text);
+    }
+
     .preprint {
-      color: var(--orange);
+      color: var(--subtle);
+      font-style: italic;
       font-weight: 500;
     }
 
     .journal {
-      color: var(--green);
+      color: var(--text);
       font-weight: 500;
     }
 
     .tech {
-      color: var(--orange);
+      color: var(--subtle);
+      font-style: italic;
       font-weight: 500;
     }
 
     .oral {
-      color: #c5221f;
-      font-weight: 500;
+      color: var(--text);
+      font-weight: 600;
     }
 
     .pub-tags {
-      margin-top: 7px;
       display: flex;
+      gap: 6px;
       flex-wrap: wrap;
-      gap: 8px;
-      font-size: 13px;
     }
 
     .pub-tags a {
-      display: inline-block;
-      padding: 2px 9px;
-      border-radius: 6px;
-      background: var(--blue-light);
-      color: var(--blue);
+      font-size: 12px;
       font-weight: 500;
+      color: var(--muted);
+      background: var(--accent-light);
+      border: 1px solid var(--accent-border);
+      border-radius: 3px;
+      padding: 1px 9px;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
     }
 
     .pub-tags a:hover {
-      background: #d2e3fc;
-      color: var(--blue-dark);
+      background: var(--accent-border);
+      color: var(--text);
       text-decoration: none;
     }
 
+    /* Lists */
     .service-list,
     .plain-list {
-      margin: 0;
-      padding: 0;
       list-style: none;
     }
 
     .service-list li,
     .plain-list li {
-      padding: 10px 0;
+      padding: 12px 0;
+      font-size: 14px;
+      color: var(--muted);
       border-bottom: 1px solid var(--border);
-      color: #303134;
+    }
+
+    .service-list li:last-child,
+    .plain-list li:last-child {
+      border-bottom: none;
+    }
+
+    .service-list li {
+      display: flex;
+      gap: 20px;
+      align-items: baseline;
     }
 
     .service-role {
-      display: inline-block;
+      font-weight: 600;
+      color: var(--text);
       min-width: 150px;
-      color: var(--blue-dark);
-      font-weight: 500;
+      flex-shrink: 0;
     }
 
+    /* Footer */
     footer {
       border-top: 1px solid var(--border);
     }
 
     .footer-inner {
-      max-width: var(--max-width);
+      max-width: var(--max-w);
       margin: 0 auto;
-      padding: 20px 24px 36px;
-      color: #9aa0a6;
+      padding: 20px 24px;
       font-size: 12px;
-      text-align: right;
+      color: #bbb;
+      text-align: left;
     }
 
-    @media (max-width: 700px) {
-      .nav-inner {
-        padding: 13px 18px;
+    /* Responsive */
+    @media (max-width: 580px) {
+      .about-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .about-links {
+        justify-content: center;
       }
 
       .nav-links {
-        gap: 14px;
-        font-size: 13px;
-      }
-
-      main {
-        padding: 36px 18px 56px;
-      }
-
-      .about-header {
-        flex-direction: column;
-        align-items: flex-start;
         gap: 16px;
       }
 
-      .about-photo {
-        width: 118px;
-        height: 118px;
-        flex-basis: auto;
+      .pub-item {
+        padding-left: 0;
+        border-left: none;
       }
 
-      .about-info h1 {
-        font-size: 34px;
+      .service-list li {
+        display: block;
       }
 
       .service-role {
         display: block;
         margin-bottom: 2px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .nav-inner {
+        padding: 13px 18px;
+      }
+
+      main {
+        padding: 0 18px;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .nav-links a {
+        font-size: 13px;
       }
     }
   </style>
@@ -379,7 +478,7 @@
     <section id="about">
       <div class="about-header">
         <div class="about-photo">
-          <img src="images/xinwang.jpg" alt="Xin Wang"
+          <img src="images/photo2022.jpg" alt="Xin Wang"
             onerror="this.style.display='none'; this.parentElement.classList.add('no-photo');">
         </div>
 
@@ -424,21 +523,27 @@
         <div class="pub-title">OpenRT: An Open-Source Red Teaming Framework for Multimodal LLMs</div>
         <div class="pub-authors"><span class="me">Xin Wang</span>, Yunhao Chen, Juncheng Li, Yixu Wang, Yang Yao, Tianle Gu, Jie Li, Yan Teng, Yingchun Wang, Xia Hu</div>
         <div class="pub-venue"><span class="tech">Technical Report</span>, 2026</div>
-        <div class="pub-tags"><a href="https://ai45lab.github.io/OpenRT/" target="_blank">Project</a></div>
+        <div class="pub-tags">
+          <a href="https://ai45lab.github.io/OpenRT/" target="_blank">Project</a>
+        </div>
       </div>
 
       <div class="pub-item">
         <div class="pub-title">NAP-Tuning: Neural Augmented Prompt Tuning for Adversarially Robust Vision-Language Models</div>
         <div class="pub-authors">Jiaming Zhang, <span class="me">Xin Wang</span>, Xinjun Ma, Lingyu Qiu, Yu-Gang Jiang, Jitao Sang</div>
         <div class="pub-venue"><span class="journal">IEEE Transactions on Pattern Analysis and Machine Intelligence</span> <span class="venue-name">(TPAMI)</span>, 2026</div>
-        <div class="pub-tags"><a href="https://arxiv.org/abs/2506.12706" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://arxiv.org/abs/2506.12706" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-item">
         <div class="pub-title">Towards Context-Invariant Safety Alignment for Large Language Models</div>
         <div class="pub-authors">Yixu Wang, Yang Yao, <span class="me">Xin Wang</span>, Yifeng Gao, Yan Teng, Xingjun Ma, Yingchun Wang</div>
         <div class="pub-venue">International Conference on Machine Learning <span class="venue-name">(ICML)</span>, Seoul, South Korea, 2026</div>
-        <div class="pub-tags"><a href="https://arxiv.org/abs/2605.20994" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://arxiv.org/abs/2605.20994" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-item">
@@ -451,7 +556,9 @@
         <div class="pub-title">AgenticEval: Toward Agentic and Self-Evolving Safety Evaluation of Large Language Models</div>
         <div class="pub-authors">Yixu Wang, <span class="me">Xin Wang</span>, Yang Yao, Xinyuan Li, Yan Teng, Xingjun Ma, Yingchun Wang</div>
         <div class="pub-venue">Findings of the Annual Meeting of the Association for Computational Linguistics <span class="venue-name">(ACL)</span>, San Diego, USA, 2026</div>
-        <div class="pub-tags"><a href="https://arxiv.org/abs/2509.26100" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://arxiv.org/abs/2509.26100" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-item">
@@ -464,42 +571,54 @@
         <div class="pub-title">Adversarial Prompt Distillation for Vision-Language Models</div>
         <div class="pub-authors">Lin Luo, <span class="me">Xin Wang</span>, Bojia Zi, Shihao Zhao, Xingjun Ma</div>
         <div class="pub-venue">IEEE International Conference on Acoustics, Speech, and Signal Processing <span class="venue-name">(ICASSP)</span>, Barcelona, Spain, 2026</div>
-        <div class="pub-tags"><a href="https://arxiv.org/abs/2411.15244" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://arxiv.org/abs/2411.15244" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-item">
         <div class="pub-title">Safety in Embodied AI: A Survey of Risks, Attacks, and Defenses</div>
         <div class="pub-authors">Xiao Li, Xiang Zheng, Yifeng Gao, Xinyu Xia, Yixu Wang, <span class="me">Xin Wang</span>, Ye Sun, Yunhan Zhao, Ming Wen, Jiayu Li, Xun Gong, Yi Liu, Yige Li, Yutao Wu, Cong Wang, Jun Sun, Yixin Cao, Zhineng Chen, Jingjing Chen, Tao Gui, Qi Zhang, Zuxuan Wu, Xipeng Qiu, Xuanjing Huang, Tiehua Zhang, Zhipeng Wei, Hanxun Huang, Sarah Erfani, James Bailey, Jianping Wang, Wei-Ying Ma, Bo Li, Xingjun Ma, Yu-Gang Jiang</div>
         <div class="pub-venue"><span class="preprint">arXiv</span>, 2026</div>
-        <div class="pub-tags"><a href="https://x-zheng16.github.io/Awesome-Embodied-AI-Safety/" target="_blank">Project</a></div>
+        <div class="pub-tags">
+          <a href="https://x-zheng16.github.io/Awesome-Embodied-AI-Safety/" target="_blank">Project</a>
+        </div>
       </div>
 
       <div class="pub-item">
         <div class="pub-title">A Safety Report on GPT-5.2, Gemini 3 Pro, Qwen3-VL, Doubao 1.8, Grok 4.1 Fast, Nano Banana Pro, and Seedream 4.5</div>
         <div class="pub-authors">Xingjun Ma, Yixu Wang, Hengyuan Xu, Yutao Wu, Yifan Ding, Yunhan Zhao, Zilong Wang, Jiabin Hua, Ming Wen, Jianan Liu, Ranjie Duan, Yifeng Gao, Yingshui Tan, Yunhao Chen, Hui Xue, <span class="me">Xin Wang</span>, Wei Cheng, Jingjing Chen, Zuxuan Wu, Bo Li, Yu-Gang Jiang</div>
         <div class="pub-venue"><span class="tech">Technical Report</span>, 2026</div>
-        <div class="pub-tags"><a href="https://arxiv.org/abs/2601.10527" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://arxiv.org/abs/2601.10527" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-item">
         <div class="pub-title">TAME: Test-Time Adversarial Prompt Tuning via Mixture-of-Experts for Vision-Language Models</div>
         <div class="pub-authors"><span class="me">Xin Wang</span>, Yixu Wang, Jiaming Zhang, Ruofan Wang, Jiaqi Yu, Kai Chen, Jingjing Chen, Xingjun Ma, Yu-Gang Jiang</div>
         <div class="pub-venue"><span class="preprint">arXiv</span>, 2026</div>
-        <div class="pub-tags"><a href="https://arxiv.org/abs/2605.17577" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://arxiv.org/abs/2605.17577" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-item">
         <div class="pub-title">DarkLLM: Learning Language-Driven Adversarial Attacks with Large Language Models</div>
         <div class="pub-authors">Ye Sun*, <span class="me">Xin Wang*</span>, Jiaming Zhang, Yifeng Gao, Yixu Wang, Qixian Zhang, Henghui Ding, Xingjun Ma, Yu-Gang Jiang</div>
         <div class="pub-venue"><span class="preprint">arXiv</span>, 2026</div>
-        <div class="pub-tags"><a href="https://arxiv.org/abs/2605.18868" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://arxiv.org/abs/2605.18868" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-item">
         <div class="pub-title">SentGuard: Sentence-Level Streaming Guardrails for Large Language Models</div>
         <div class="pub-authors">Jiaqi Yu*, <span class="me">Xin Wang*</span>, Yixu Wang, Jie Li, Yan Teng, Xingjun Ma, Yingchun Wang</div>
         <div class="pub-venue"><span class="preprint">arXiv</span>, 2026</div>
-        <div class="pub-tags"><a href="https://arxiv.org/abs/2606.02041" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://arxiv.org/abs/2606.02041" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-area">2025</div>
@@ -508,56 +627,72 @@
         <div class="pub-title">TAPT: Test-Time Adversarial Prompt Tuning for Robust Inference in Vision-Language Models</div>
         <div class="pub-authors"><span class="me">Xin Wang</span>, Kai Chen, Jiaming Zhang, Jingjing Chen, Xingjun Ma</div>
         <div class="pub-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition <span class="venue-name">(CVPR)</span>, Nashville, USA, 2025</div>
-        <div class="pub-tags"><a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Wang_TAPT_Test-Time_Adversarial_Prompt_Tuning_for_Robust_Inference_in_Vision-Language_CVPR_2025_paper.pdf" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Wang_TAPT_Test-Time_Adversarial_Prompt_Tuning_for_Robust_Inference_in_Vision-Language_CVPR_2025_paper.pdf" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-item">
         <div class="pub-title">FreezeVLA: Action-Freezing Attacks against Vision-Language-Action Models</div>
         <div class="pub-authors"><span class="me">Xin Wang</span>, Jie Li, Zejia Weng, Yixu Wang, Yifeng Gao, Tianyu Pang, Chao Du, Yan Teng, Yingchun Wang, Zuxuan Wu, Xingjun Ma, Yu-Gang Jiang</div>
         <div class="pub-venue"><span class="preprint">arXiv</span>, 2025</div>
-        <div class="pub-tags"><a href="https://arxiv.org/abs/2509.19870" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://arxiv.org/abs/2509.19870" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-item">
         <div class="pub-title">SafeWork-R1: Coevolving Safety and Intelligence under the AI-45&deg; Law</div>
         <div class="pub-authors"><span class="me">Shanghai AI Lab, Core Contributor: Xin Wang</span></div>
         <div class="pub-venue"><span class="tech">Technical Report</span>, 2025</div>
-        <div class="pub-tags"><a href="https://arxiv.org/abs/2507.18576" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://arxiv.org/abs/2507.18576" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-item">
         <div class="pub-title">SafeVid: Toward Safety-Aligned Video Large Multimodal Models</div>
         <div class="pub-authors">Yixu Wang, Jiaxin Song, Yifeng Gao, <span class="me">Xin Wang</span>, Yang Yao, Yan Teng, Xingjun Ma, Yingchun Wang, Yu-Gang Jiang</div>
         <div class="pub-venue">Advances in Neural Information Processing Systems <span class="venue-name">(NeurIPS)</span>, San Diego, USA, 2025</div>
-        <div class="pub-tags"><a href="https://arxiv.org/abs/2505.11926" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://arxiv.org/abs/2505.11926" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-item">
         <div class="pub-title">Argus Inspection: Do Multimodal Large Language Models Possess the Eye of Panoptes? <span class="oral">(Oral)</span></div>
         <div class="pub-authors">Yang Yao, Lingyu Li, Jiaxin Song, Chiyu Chen, Zhenqi He, Yixu Wang, <span class="me">Xin Wang</span>, Tianle Gu, Jie Li, Yan Teng, Yingchun Wang</div>
         <div class="pub-venue">ACM Multimedia <span class="venue-name">(MM)</span>, Dublin, Ireland, 2025</div>
-        <div class="pub-tags"><a href="https://dl.acm.org/doi/10.1145/3746027.3758266" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://dl.acm.org/doi/10.1145/3746027.3758266" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-item">
         <div class="pub-title">Safety at Scale: A Comprehensive Survey of Large Model Safety</div>
         <div class="pub-authors">Xinjun Ma, Yifeng Gao, Yixu Wang, Ruofan Wang, <span class="me">Xin Wang</span>, Ye Sun, Yifan Ding, Hengyuan Xu, Yunhao Chen, Yunhan Zhao, Hanxun Huang, Yige Li, Yutao Wu, Jiaming Zhang, Xiang Zheng, Yang Bai, Zuxuan Wu, Xipeng Qiu, Jingfeng Zhang, Yiming Li, Xudong Han, Haonan Li, Jun Sun, Cong Wang, Jindong Gu, Baoyuan Wu, Siheng Chen, Tianwei Zhang, Yang Liu, Mingming Gong, Tongliang Liu, Shirui Pan, Cihang Xie, Tianyu Pang, Yinpeng Dong, Ruoxi Jia, Yang Zhang, Shiqing Ma, Xiangyu Zhang, Neil Gong, Chaowei Xiao, Sarah Erfani, Tim Baldwin, Bo Li, Masashi Sugiyama, Dacheng Tao, James Bailey, Yu-Gang Jiang</div>
         <div class="pub-venue"><span class="journal">Foundations and Trends&reg; in Privacy and Security</span>, 2025</div>
-        <div class="pub-tags"><a href="https://www.nowpublishers.com/article/Details/SEC-051" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://www.nowpublishers.com/article/Details/SEC-051" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-item">
         <div class="pub-title">Evolve the Method, Not the Prompts: Evolutionary Synthesis of Jailbreak Attacks on LLMs</div>
         <div class="pub-authors">Yunhao Chen*, <span class="me">Xin Wang*</span>, Juncheng Li, Yixu Wang, Jie Li, Yan Teng, Yingchun Wang, Xingjun Ma</div>
         <div class="pub-venue"><span class="preprint">arXiv</span>, 2025</div>
-        <div class="pub-tags"><a href="https://arxiv.org/abs/2511.12710" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://arxiv.org/abs/2511.12710" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-item">
         <div class="pub-title">Simulated Ensemble Attack: Transferable Jailbreaks Across Fine-tuned Vision-Language Models</div>
         <div class="pub-authors">Ruofan Wang, <span class="me">Xin Wang</span>, Yang Yao, Xuan Tong, Xingjun Ma</div>
         <div class="pub-venue"><span class="preprint">arXiv</span>, 2025</div>
-        <div class="pub-tags"><a href="https://arxiv.org/abs/2508.01741" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://arxiv.org/abs/2508.01741" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-item">
@@ -570,14 +705,18 @@
         <div class="pub-title">LeakyCLIP: Extracting Training Data from CLIP</div>
         <div class="pub-authors">Yunhao Chen, Shujie Wang, <span class="me">Xin Wang</span>, Xingjun Ma</div>
         <div class="pub-venue"><span class="preprint">arXiv</span>, 2025</div>
-        <div class="pub-tags"><a href="https://arxiv.org/abs/2508.00756" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://arxiv.org/abs/2508.00756" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-item">
         <div class="pub-title">Imperceptible Jailbreaking against Large Language Models</div>
         <div class="pub-authors">Kuofeng Gao, Yiming Li, Chao Du, <span class="me">Xin Wang</span>, Xingjun Ma, Shu-Tao Xia, Tianyu Pang</div>
         <div class="pub-venue"><span class="preprint">arXiv</span>, 2025</div>
-        <div class="pub-tags"><a href="https://arxiv.org/abs/2510.05025" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://arxiv.org/abs/2510.05025" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-item">
@@ -590,14 +729,18 @@
         <div class="pub-title">BackdoorVLM: A Benchmark for Backdoor Attacks on Vision-Language Models</div>
         <div class="pub-authors">Juncheng Li, Yige Li, Hanxun Huang, Yunhao Chen, <span class="me">Xin Wang</span>, Yixu Wang, Xingjun Ma, Yu-Gang Jiang</div>
         <div class="pub-venue"><span class="preprint">arXiv</span>, 2025</div>
-        <div class="pub-tags"><a href="https://arxiv.org/abs/2511.18921v1" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://arxiv.org/abs/2511.18921v1" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-item">
         <div class="pub-title">DAVID-XR1: Detecting AI-Generated Videos with Explainable Reasoning</div>
         <div class="pub-authors">Yifeng Gao, Yifan Ding, Hongyu Su, Juncheng Li, Yunhan Zhao, Lin Luo, Zixing Chen, Li Wang, <span class="me">Xin Wang</span>, Yixu Wang, Xingjun Ma, Yu-Gang Jiang</div>
         <div class="pub-venue"><span class="preprint">arXiv</span>, 2025</div>
-        <div class="pub-tags"><a href="https://arxiv.org/abs/2506.14827" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://arxiv.org/abs/2506.14827" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-item">
@@ -612,28 +755,36 @@
         <div class="pub-title">AdvQDet: Detecting Query-Based Adversarial Attacks with Adversarial Contrastive Prompt Tuning</div>
         <div class="pub-authors"><span class="me">Xin Wang</span>, Kai Chen, Xinjun Ma, Zhineng Chen, Jingjing Chen, Yu-Gang Jiang</div>
         <div class="pub-venue">ACM Multimedia <span class="venue-name">(MM)</span>, Melbourne, Australia, 2024</div>
-        <div class="pub-tags"><a href="https://dl.acm.org/doi/10.1145/3664647.3681032" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://dl.acm.org/doi/10.1145/3664647.3681032" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-item">
         <div class="pub-title">Adversarial Prompt Tuning for Vision-Language Models</div>
         <div class="pub-authors">Jiaming Zhang, Xinjun Ma, <span class="me">Xin Wang</span>, Lingyu Qiu, Jiaqi Wang, Yu-Gang Jiang, Jitao Sang</div>
         <div class="pub-venue">European Conference on Computer Vision <span class="venue-name">(ECCV)</span>, Milano, Italy, 2024</div>
-        <div class="pub-tags"><a href="https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/06118.pdf" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/06118.pdf" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-item">
         <div class="pub-title">Lossless Medical Image Compression Based on Anatomical Information and Deep Neural Networks</div>
         <div class="pub-authors">Qiusha Min, <span class="me">Xin Wang</span>, Bo Huang, Zhongwei Zhou</div>
         <div class="pub-venue"><span class="journal">Biomedical Signal Processing and Control</span>, 2022</div>
-        <div class="pub-tags"><a href="https://www.sciencedirect.com/science/article/abs/pii/S1746809422000210" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://www.sciencedirect.com/science/article/abs/pii/S1746809422000210" target="_blank">Paper</a>
+        </div>
       </div>
 
       <div class="pub-item">
         <div class="pub-title">Web-Based Technology for Remote Viewing of Radiological Images: App Validation</div>
         <div class="pub-authors">Qiusha Min*, <span class="me">Xin Wang*</span>, Bo Huang, Liangzhou Xu</div>
         <div class="pub-venue"><span class="journal">Journal of Medical Internet Research</span> <span class="venue-name">(JMIR)</span>, 2020</div>
-        <div class="pub-tags"><a href="https://www.jmir.org/2020/9/e16224/" target="_blank">Paper</a></div>
+        <div class="pub-tags">
+          <a href="https://www.jmir.org/2020/9/e16224/" target="_blank">Paper</a>
+        </div>
       </div>
 
     </section>
